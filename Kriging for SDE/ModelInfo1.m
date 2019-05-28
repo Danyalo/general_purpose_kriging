@@ -1,6 +1,11 @@
 global ModelInfo
+
+% Coefficients for diff system
+ModelInfo.p12 = 2;
+ModelInfo.p22 = -4;
+
 % Number of variables
-k=4;
+k=2;
 % Number of sample points
 n=100;
 ModelInfo.ntrain = 80;
