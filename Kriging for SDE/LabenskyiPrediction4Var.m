@@ -26,7 +26,7 @@ for i=1:ModelInfo.ntest
     meanSquareDev = meanSquareDev + diff^2;
 end
 
-meanSquareDev = meanSquareDev / (ModelInfo.ntest * ModelInfo.ntest);
+meanSquareDev = meanSquareDev / ModelInfo.ntest;
 
 fprintf("Maximum absolute deviation of the prediction is %d   \n", maxAbsDiff);
 fprintf("Mean Square deviation of the prediction is %d   \n", meanSquareDev);

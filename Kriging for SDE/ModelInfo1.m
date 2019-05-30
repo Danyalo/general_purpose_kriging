@@ -5,13 +5,15 @@ ModelInfo.p12 = 2;
 ModelInfo.p22 = -4;
 
 % Number of variables
-k=2;
+k=4;
 % Number of sample points
 n=100;
 ModelInfo.ntrain = 80;
 ModelInfo.ntest = 20;
+
 % Create sampling plan
 ModelInfo.X=bestlh(n,k,50,20);
+
 % Calculate observed data
 for i=1:n
     ModelInfo.y(i,1)=LabenskyiFunction(ModelInfo.X(i,:));

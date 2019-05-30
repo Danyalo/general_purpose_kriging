@@ -64,5 +64,5 @@ end
 
 meanSquareDev = meanSquareDev / (21 * 21);
 
-%fprintf("Maximum absolute deviation of the prediction is %d   \n", maxAbsDiff);
-%fprintf("Mean Square deviation of the prediction is %d   \n", meanSquareDev);
+fprintf("Maximum absolute deviation of the prediction is %d   \n", maxAbsDiff);
+fprintf("Mean Square deviation of the prediction is %d   \n", meanSquareDev);
