@@ -1,4 +1,4 @@
-function [NegLnLike,Psi,U]=ModelInfoOneVar(x)
+function [NegLnLike,Psi,U]=likelihood1Var(x)
 % Calculates the negative of the concentrated ln – likelihood
 %
 %Inputs:

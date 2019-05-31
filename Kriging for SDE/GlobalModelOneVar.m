@@ -24,7 +24,7 @@ end
 UpperTheta=ones(1,k).*2;
 LowerTheta=ones(1,k).* - 3;
 % Run GA search of likelihood
-[ModelInfoOneVar.Theta,MinNegLnLikelihood]=...
-    ga(@likelihood,k,[],[],[],[], LowerTheta,UpperTheta);
+[ModelInfoOneVar.Theta, MinNegLnLikelihood]=...
+    ga(@likelihood1Var,k,[],[],[],[], LowerTheta, UpperTheta);
 % Put Cholesky factorization of Psi, into ModelInfo
-[NegLnLike,ModelInfoOneVar.Psi,ModelInfoOneVar.U]=likelihood(ModelInfoOneVar.Theta);
+[NegLnLike, ModelInfoOneVar.Psi, ModelInfoOneVar.U]=likelihood1Var(ModelInfoOneVar.Theta);

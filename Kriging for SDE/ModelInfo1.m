@@ -5,24 +5,29 @@ ModelInfo.p12 = 2;
 ModelInfo.p22 = -4;
 
 % Number of variables
-k=4;
+k=2;
 % Number of sample points
-n=100;
-ModelInfo.ntrain = 80;
-ModelInfo.ntest = 20;
+ModelInfo.ntrain = 100;
 
 % Create sampling plan
-ModelInfo.X=bestlh(n,k,50,20);
+ModelInfo.Xtrain=bestlh(ModelInfo.ntrain,k,50,20);
 
 % Calculate observed data
-for i=1:n
-    ModelInfo.y(i,1)=LabenskyiFunction(ModelInfo.X(i,:));
+for i=1:ModelInfo.ntrain
+    ModelInfo.Ytrain(i,1)=branin(ModelInfo.Xtrain(i,:));
 end
 
-ModelInfo.Xtrain = ModelInfo.X(1 : ModelInfo.ntrain, :);
-ModelInfo.Xtest = ModelInfo.X(ModelInfo.ntrain+1 : end, :);
-ModelInfo.Ytrain = ModelInfo.y(1 : ModelInfo.ntrain);
-ModelInfo.Ytest = ModelInfo.y(ModelInfo.ntrain+1 : end);
+
+ModelInfo.ntest = fix(ModelInfo.ntrain / 4);
+
+% Create sampling plan
+ModelInfo.Xtest=bestlh(ModelInfo.ntest,k,50,20);
+
+% Calculate observed data
+for i=1:ModelInfo.ntest
+    ModelInfo.Ytest(i,1)=branin(ModelInfo.Xtest(i,:));
+end
+
 
 % Set upper and lower bounds for search of log theta
 UpperTheta=ones(1,k).*2;
