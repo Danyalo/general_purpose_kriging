@@ -14,7 +14,7 @@ ModelInfo.Xtrain=bestlh(ModelInfo.ntrain,k,50,20);
 
 % Calculate observed data
 for i=1:ModelInfo.ntrain
-    ModelInfo.Ytrain(i,1)=branin(ModelInfo.Xtrain(i,:));
+    ModelInfo.Ytrain(i,1) = branin(ModelInfo.Xtrain(i,:));
 end
 
 
@@ -32,8 +32,9 @@ end
 % Set upper and lower bounds for search of log theta
 UpperTheta=ones(1,k).*2;
 LowerTheta=ones(1,k).* - 3;
+
 % Run GA search of likelihood
-[ModelInfo.Theta,MinNegLnLikelihood]=...
+[ModelInfo.Theta, MinNegLnLikelihood]=...
     ga(@likelihood,k,[],[],[],[], LowerTheta,UpperTheta);
 % Put Cholesky factorization of Psi, into ModelInfo
 [NegLnLike,ModelInfo.Psi,ModelInfo.U]=likelihood(ModelInfo.Theta);

@@ -21,7 +21,6 @@ plot(ModelInfo.X(:,1),ModelInfo.X(:,2),'k.','MarkerSize',20)
 
 
 % Error analysis
-fun = @branin;
 x0 = [0.1,0.8]; % important
 A = [];
 b = [];
@@ -32,16 +31,14 @@ ub = [1,1];
 nonlcon = [];
 options = optimoptions('fmincon','Display','iter','Algorithm','sqp');
 
+fun = @branin;
 [x_min,fval] = fmincon(fun,x0,A,b,Aeq,beq,lb,ub, nonlcon, options);
 
 fun2 = @pred;
-
 [x_min_pred,fval_pred] = fmincon(fun2,x0,A,b,Aeq,beq,lb,ub, nonlcon, options);
 
 
-
-% Find the minimum:
-
+% Find the minimum
 minVal = BraninPred(1,1);
 minI = 1;
 minJ = 1;
@@ -55,9 +52,9 @@ for i=1:21
     end
 end
 % fmincon
-%fprintf("Predicted function's minimum value is %d   \n", minVal);
-%fprintf("at the indeces (%d, %d)  \n", minI, minJ);
-%fprintf("at the point (%d, %d)  \n\n\n", Xplot(minI), Xplot(minJ));
+fprintf("Predicted function's minimum value is %d   \n", minVal);
+fprintf("at the indeces (%d, %d)  \n", minI, minJ);
+fprintf("at the point (%d, %d)  \n\n\n", Xplot(minI), Xplot(minJ));
 
 % Calculate deviation:
 
@@ -76,5 +73,5 @@ end
 
 meanSquareDev = meanSquareDev / (21 * 21);
 
-%fprintf("Maximum absolute deviation of the prediction is %d   \n", maxAbsDiff);
-%fprintf("Mean Square deviation of the prediction is %d   \n", meanSquareDev);
+fprintf("Maximum absolute deviation of the prediction is %d   \n", maxAbsDiff);
+fprintf("Mean Square deviation of the prediction is %d   \n", meanSquareDev);
